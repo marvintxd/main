@@ -1,7 +1,8 @@
 package seedu.address.model.template;
 
-import seedu.address.model.tag.Tag;
-
+/**
+ * A section of the template, representing a category with tags.
+ */
 public class TemplateSection {
     private String title;
     private String category;
