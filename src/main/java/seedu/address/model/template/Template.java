@@ -8,17 +8,17 @@ import java.util.ArrayList;
  */
 public class Template {
 
-    private ArrayList<ResumeSection> sections;
+    private ArrayList<TemplateSection> sections;
 
     public Template() {
-        this.sections = new ArrayList<ResumeSection>();
+        this.sections = new ArrayList<TemplateSection>();
     }
 
     public void addSection(String title, String category, String[] tags) {
-        this.sections.add(new ResumeSection(title, category, tags));
+        this.sections.add(new TemplateSection(title, category, tags));
     }
 
-    public ArrayList<ResumeSection> getSections() {
-        return new ArrayList<ResumeSection>(sections);
+    public ArrayList<TemplateSection> getSections() {
+        return new ArrayList<TemplateSection>(sections);
     }
 }
