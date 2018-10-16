@@ -45,7 +45,7 @@ public class Template {
         String[] parts = line.split(DELIMITER);
         String title = parts[0];
         String cateName = parts[1];
-        String tags = parts[2];
+        String tags = parts.length == 3 ? parts[2] : "";
 
         Predicate<Taggable> predicate = getPredicate(tags);
 
