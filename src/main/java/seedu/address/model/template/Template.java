@@ -134,6 +134,7 @@ public class Template {
 
         // state check
         Template other = (Template) obj;
-        return sections.equals(other.sections);
+        return sections.equals(other.sections)
+                && stringRepresentation.equals(other.stringRepresentation);
     }
 }
