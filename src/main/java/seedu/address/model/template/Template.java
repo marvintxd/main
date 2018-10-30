@@ -110,4 +110,21 @@ public class Template {
     public ArrayList<TemplateSection> getSections() {
         return new ArrayList<TemplateSection>(sections);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        // short circuit if same object
+        if (obj == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(obj instanceof Template)) {
+            return false;
+        }
+
+        // state check
+        Template other = (Template) obj;
+        return sections.equals(other.sections);
+    }
 }
