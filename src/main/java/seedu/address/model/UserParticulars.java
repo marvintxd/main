@@ -59,10 +59,10 @@ public class UserParticulars implements Serializable {
 
         UserParticulars other = (UserParticulars) obj;
 
-        return Objects.equals(name, other.name) &&
-                Objects.equals(mobile, other.mobile) &&
-                Objects.equals(email, other.email) &&
-                Objects.equals(address, other.address);
+        return Objects.equals(name, other.name)
+                && Objects.equals(mobile, other.mobile)
+                && Objects.equals(email, other.email)
+                && Objects.equals(address, other.address);
     }
 
     @Override
