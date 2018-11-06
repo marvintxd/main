@@ -221,7 +221,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     public Optional<Template> getLoadedTemplate() {
-        return Optional.of(loadedTemplate);
+        return Optional.ofNullable(loadedTemplate);
         //will be up to the Generation part to raise NewResultAvailableEvent to say no template loaded
     }
 
