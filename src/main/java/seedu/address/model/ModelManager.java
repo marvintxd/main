@@ -39,7 +39,7 @@ public class ModelManager extends ComponentManager implements Model {
     private final VersionedAddressBook versionedAddressBook;
     private final FilteredList<Person> filteredPersons;
     private final Awareness awareness;
-    private Optional<Template> loadedTemplate;
+    private Template loadedTemplate;
     private Resume lastGeneratedResume;
     private final VersionedEntryBook versionedEntryBook;
     private final FilteredList<ResumeEntry> filteredEntries;
@@ -60,7 +60,7 @@ public class ModelManager extends ComponentManager implements Model {
 
         versionedAddressBook = new VersionedAddressBook(addressBook);
         filteredPersons = new FilteredList<>(versionedAddressBook.getPersonList());
-        loadedTemplate = Optional.empty();
+        loadedTemplate = null;
         this.awareness = awareness;
         versionedEntryBook = new VersionedEntryBook(entryBook);
         filteredEntries = new FilteredList<>(versionedEntryBook.getEntryList());
@@ -221,7 +221,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     @Override
     public Optional<Template> getLoadedTemplate() {
-        return loadedTemplate;
+        return Optional.of(loadedTemplate);
         //will be up to the Generation part to raise NewResultAvailableEvent to say no template loaded
     }
 
@@ -313,13 +313,13 @@ public class ModelManager extends ComponentManager implements Model {
     public void handleTemplateLoadedEvent(TemplateLoadedEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event,
                 "Template loaded from " + event.filepath.toString() + " to Model"));
-        loadedTemplate = Optional.of(event.getTemplate());
+        loadedTemplate = event.getTemplate();
     }
 
     @Subscribe
     public void handleTemplateLoadingExceptionEvent(TemplateLoadingExceptionEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event, "Exception when attempting to load template from "
                 + event.filepath.toString()));
-        loadedTemplate = Optional.empty();
+        loadedTemplate = null;
     }
 }
