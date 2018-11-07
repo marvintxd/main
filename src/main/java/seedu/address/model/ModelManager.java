@@ -290,7 +290,8 @@ public class ModelManager extends ComponentManager implements Model {
                 && filteredEntries.equals(other.filteredEntries)
                 && categoryManager.equals(other.categoryManager)
                 && tagManager.equals(other.tagManager)
-                && loadedTemplate.equals(other.loadedTemplate)/*
+                && (loadedTemplate == other.loadedTemplate
+                || loadedTemplate.equals(other.loadedTemplate))/*
                 && awareness.equals(other.awareness)
                 && lastGeneratedResume.equals(other.lastGeneratedResume)*/;
     }
