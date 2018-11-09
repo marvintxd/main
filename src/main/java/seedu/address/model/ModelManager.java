@@ -40,6 +40,7 @@ public class ModelManager extends ComponentManager implements Model {
     private final FilteredList<Person> filteredPersons;
     private final Awareness awareness;
     private Template loadedTemplate;
+    private final UserParticulars userParticulars;
     private Resume lastGeneratedResume;
     private final VersionedEntryBook versionedEntryBook;
     private final FilteredList<ResumeEntry> filteredEntries;
@@ -61,6 +62,7 @@ public class ModelManager extends ComponentManager implements Model {
         versionedAddressBook = new VersionedAddressBook(addressBook);
         filteredPersons = new FilteredList<>(versionedAddressBook.getPersonList());
         loadedTemplate = null;
+        userParticulars = userPrefs.getUserParticulars();
         this.awareness = awareness;
         versionedEntryBook = new VersionedEntryBook(entryBook);
         filteredEntries = new FilteredList<>(versionedEntryBook.getEntryList());
@@ -210,6 +212,12 @@ public class ModelManager extends ComponentManager implements Model {
     public void updateFilteredEntryList(Predicate<ResumeEntry> predicate) {
         requireNonNull(predicate);
         filteredEntries.setPredicate(predicate);
+    }
+    //=========== Particulars ===============================================================================
+
+    @Override
+    public UserParticulars getUserParticulars() {
+        return userParticulars;
     }
 
     //=========== Template ==================================================================================
