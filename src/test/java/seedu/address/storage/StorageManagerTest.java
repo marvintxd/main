@@ -5,6 +5,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -19,7 +21,9 @@ import seedu.address.commons.events.storage.DataSavingExceptionEvent;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.template.Template;
 import seedu.address.storage.entry.XmlEntryBookStorage;
+import seedu.address.testutil.Assert;
 import seedu.address.ui.testutil.EventsCollectorRule;
 
 public class StorageManagerTest {
@@ -35,8 +39,9 @@ public class StorageManagerTest {
     public void setUp() {
         XmlAddressBookStorage addressBookStorage = new XmlAddressBookStorage(getTempFilePath("ab"));
         XmlEntryBookStorage entryBookStorage = new XmlEntryBookStorage(getTempFilePath("eb"));
+        TxtTemplateStorage templateStorage = new TxtTemplateStorage(getTempFilePath("tmp"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
-        storageManager = new StorageManager(addressBookStorage, entryBookStorage, userPrefsStorage);
+        storageManager = new StorageManager(addressBookStorage, entryBookStorage, templateStorage, userPrefsStorage);
     }
 
     private Path getTempFilePath(String fileName) {
@@ -81,6 +86,7 @@ public class StorageManagerTest {
         // Create a StorageManager while injecting a stub that  throws an exception when the save method is called
         Storage storage = new StorageManager(new XmlAddressBookStorageExceptionThrowingStub(Paths.get("dummy")),
                                              new XmlEntryBookStorage(Paths.get("dummy")),
+                                             new TxtTemplateStorage(Paths.get("dummy")),
                                              new JsonUserPrefsStorage(Paths.get("dummy")));
         storage.handleAddressBookChangedEvent(new AddressBookChangedEvent(new AddressBook()));
         assertTrue(eventsCollectorRule.eventsCollector.getMostRecent() instanceof DataSavingExceptionEvent);
@@ -100,6 +106,24 @@ public class StorageManagerTest {
         public void saveAddressBook(ReadOnlyAddressBook addressBook, Path filePath) throws IOException {
             throw new IOException("dummy exception");
         }
+    }
+
+    @Test
+    public void loadTemplate() throws Exception {
+        /*
+         * More extensive testing of Template reading is done in {@link TxtTemplateStorageTest} class.
+         * Since Template cannot be saved via the app, there's no way of actually reading a Template from a temp folder
+         * and checking if it is read correctly. But as an integration test, this test still checks that StorageManager
+         * forwards the call to TemplateStorage correctly.
+         */
+
+        Assert.assertThrows(FileNotFoundException.class,
+                () -> storageManager.loadTemplate(storageManager.getTemplateFilePath()));
+    }
+
+    @Test
+    public void getTemplateFilePath() {
+        assertNotNull(storageManager.getTemplateFilePath());
     }
 
 
