@@ -10,7 +10,7 @@
 <VBox fx:id="placeHolder" styleClass="pane-with-border" xmlns="http://javafx.com/javafx/8"
       xmlns:fx="http://javafx.com/fxml/1">
     <HBox spacing="20" alignment="CENTER">
-        <Label styleClass="cell_list_label" text="EXPANDED ENTRY"/>
+        <Label styleClass="cell_list_label" text="Selected Entry"/>
     </HBox>
     <TextArea fx:id="expandedEntryText" editable="false" styleClass="result-display"/>
 </VBox>
