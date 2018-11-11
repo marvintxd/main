@@ -394,7 +394,7 @@ Loads the template specified in `google.txt`
 Loads the template specified in `facebook.txt` in the `templates` subfolder
 
 [TIP]
-If the format of the text file looks right but the application says that it is invalid, try checking for and removing any extra newlines or spaces.
+If the format of the text file looks to be correct but the application says that it is invalid, try checking for and removing any extra newlines or spaces.
 
 // end::template[]
 
@@ -435,7 +435,7 @@ Format: `clear`
 Exits the program. +
 Format: `exit`
 
-=== Saving the data [Coming in v1.4]
+=== Saving the data
 
 ResuMaker data are saved in the hard disk automatically after any command that changes the data. +
 There is no need to save manually.
