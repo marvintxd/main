@@ -12,7 +12,7 @@
     <HBox spacing="20" alignment="CENTER">
         <Label styleClass="cell_list_label" text="Selected Entry"/>
     </HBox>
-    <VBox spacing="3">
+    <VBox spacing="1">
         <Label fx:id="title" styleClass="expanded-title" />
         <VBox spacing="3">
             <Label fx:id="categoryTag" styleClass="expanded-category-tag"/>
