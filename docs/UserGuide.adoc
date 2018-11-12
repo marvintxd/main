@@ -108,6 +108,7 @@ Here are the features available in ResuMaker:
 * Items in square brackets are optional e.g `~CATEGORY [t/TITLE] [s/SUBHEADER] [d/DURATION] [#TAG]...` can be used as `~work t/The Source Enterprise s/Java programmer d/ Jan 2012 - Dec 2014 #JAVA` or `~awards`.
 * Items with `…`​ after them can be used multiple times including zero times e.g. `[#TAG]...` can be used as `{nbsp}` (i.e. 0 times), `#JAVA`, `#JAVA #Software Engineering`, `#JAVA #Software Engineering #AI` etc.
 * Parameters can be in any order e.g. if the command specifies `[t/TITLE] [s/SUBHEADER]`, `[s/SUBHEADER] [t/TITLE]` is also acceptable.
+* All commands are case sensitive, e.g. `deleteEntry 1` is valid but `deleteentry 1` would not be.
 ====
 
 === Viewing help : `help`
