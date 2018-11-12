@@ -35,7 +35,7 @@ public class TxtTemplateStorageTest {
     @Test
     public void loadTemplate_validFilePath_success() throws Exception {
         Template loaded = new TxtTemplateStorage().loadTemplate(TEST_DATA_FOLDER.resolve(VALID_TEMPLATE));
-        assertEquals(Template.getDefaultTemplate().toString(), loaded.toString());
+        assertEquals(Template.getDefaultTemplate().getSectionsString(), loaded.getSectionsString());
     }
 
     @Test
