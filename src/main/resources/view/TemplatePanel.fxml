@@ -10,7 +10,6 @@
       fx:id="templatePanel">
     <HBox spacing="20" alignment="CENTER">
         <Label fx:id="templateLabel" styleClass="cell_list_label" text="Current Template"/>
-        <Label styleClass="expanded-entry-body"/>
     </HBox>
     <TextArea fx:id="templatePanelDisplay" editable="false" styleClass="template-panel-display" VBox.vgrow="ALWAYS"/>
 </VBox>
