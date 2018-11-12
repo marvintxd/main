@@ -33,7 +33,8 @@ for them to be displayed in the generated resume.
 
 * *Minor enhancement*: implemented the saving of entries into an XML file.
 
-* *Code contributed*: [https://github.com[Functional code]] [https://github.com[Test code]] _{give links to collated code files}_
+* *Code contributed*:
+https://nus-cs2103-ay1819s1.github.io/cs2103-dashboard/#=undefined&search=marvintxd[Project Code Dashboard]
 
 * *Other contributions*:
 
@@ -44,6 +45,7 @@ for them to be displayed in the generated resume.
 *** Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests https://github.com[#36], https://github.com[#38])
 ** Documentation:
 *** Did cosmetic tweaks to existing contents of the User Guide: https://github.com[#14]
+*** Updated component diagrams: [ ]
 ** Community:
 *** PRs reviewed (with non-trivial review comments): https://github.com/CS2103-AY1819S1-W17-1/main/pull/267[#267], https://github.com/CS2103-AY1819S1-W17-1/main/pull/150[#150]
 *** Bugs reported on teammates' features: https://github.com/CS2103-AY1819S1-W17-1/main/issues/290[#290]
@@ -51,7 +53,7 @@ for them to be displayed in the generated resume.
 *** Reported bugs and suggestions for other teams in the class (examples:  https://github.com[1], https://github.com[2], https://github.com[3])
 *** Some parts of the history feature I added was adopted by several other class mates (https://github.com[1], https://github.com[2])
 ** Tools:
-*** Set up Travis CI for the project
+*** Set up Travis CI and autopublishing of docs for the project
 
 == Contributions to the User Guide
 
