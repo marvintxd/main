@@ -329,6 +329,8 @@ Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and 
 
 // tag::template[]
 === Using templates to specify resume formats
+A template specifies the format of the generated resume, in terms of the ordering and title of sections,
+and which entries to include.
 Templates are written by the user in a specific format and stored as text files.
 They should be saved in the same directory as the `resumaker.jar` file, and are parsed and loaded into the application using the `loadtemplate` command.
 

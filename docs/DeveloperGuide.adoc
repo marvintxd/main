@@ -222,11 +222,6 @@ The `Model`,
 * exposes an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
 
-[NOTE]
-As a more OOP model, we can store a `Tag` list in `Address Book`, which `Person` can reference. This would allow `Address Book` to only require one `Tag` object per unique `Tag`, instead of each `Person` needing their own `Tag` object. An example of how such a model may look like is given below. +
- +
-image:ModelClassBetterOopDiagram.png[width="800"]
-
 [[Design-Storage]]
 === Storage component
 
@@ -374,16 +369,9 @@ Currently, a mixture of these functions are implemented. This allows the develop
 
 A template specifies the format of the generated resume. It specifies the sections in the resume, and which entries should be included under each section based on a set of tags.
 
-==== Template object structure
-
-The diagram below shows the structure of a `Template` object. A `Template` contains an `ArrayList` of `TemplateSection`,
-where each contains a title to be displayed and two predicates for filtering entries based on their category and tags.
-
-.Template object UML class diagram
-image::Template_UML.png[width="500"]
-
 ==== Template file
-Templates are stored as text files, with each line in the following format:
+This section describes the implementation of the Template feature.
+Templates files are user-written text files, with each line in the following format:
 ----
 [Category Heading]:~[Category Tag]:[Tag Groups]
 ----
@@ -393,6 +381,15 @@ If no tags are specified, all entries with the `[Category Tag]` will be included
 
 
 Template files are written by the user and loaded into the application using the `loadtemplate` command.
+
+==== Template object structure
+
+The diagram below shows the structure of a `Template` object. A `Template` contains an `ArrayList` of `TemplateSection`,
+where each contains a title to be displayed and two predicates for filtering entries based on their category and tags.
+
+.Template object UML class diagram
+image::Template_UML.png[width="600"]
+
 
 ==== Template loading sequence
 
@@ -407,6 +404,16 @@ Otherwise, a `TemplateLoadingExceptionEvent` will be raised and handled by `Mode
 
 .Component interactions for loadtemplate template1.txt command (part 2)
 image::Template_SD2.png[width="800"]
+
+The diagram below provides a detailed view of the sequence of events taking place within the Storage component.
+When `loadTemplate()` is called, `StorageManager` calls `loadTemplate()` on its `TxtTemplateStorage`,
+which then creates a new `Template` object.
+`loadTemplate()` will the repeatedly call `addSection()` on the created `Template` and parse the text file until it has been fully read.
+The returned `Template` will then be passed into a `TemplateLoadedEvent`.
+If an exception occurs while reading, such as if the file format is invalid, a `TemplateLoadingExceptionEvent` is raised instead.
+
+.Detailed sequence for template loading in Storage component
+image::TemplateStorage Sequence Diagram.png[width="800"]
 
 ==== Design Considerations
 ===== Aspect: When to load the template
