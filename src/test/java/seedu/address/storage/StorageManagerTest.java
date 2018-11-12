@@ -5,7 +5,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -21,7 +20,6 @@ import seedu.address.commons.events.storage.DataSavingExceptionEvent;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.template.Template;
 import seedu.address.storage.entry.XmlEntryBookStorage;
 import seedu.address.testutil.Assert;
 import seedu.address.ui.testutil.EventsCollectorRule;
@@ -109,7 +107,7 @@ public class StorageManagerTest {
     }
 
     @Test
-    public void loadTemplate() throws Exception {
+    public void loadTemplate() {
         /*
          * More extensive testing of Template reading is done in {@link TxtTemplateStorageTest} class.
          * Since Template cannot be saved via the app, there's no way of actually reading a Template from a temp folder
@@ -117,8 +115,8 @@ public class StorageManagerTest {
          * forwards the call to TemplateStorage correctly.
          */
 
-        Assert.assertThrows(FileNotFoundException.class,
-                () -> storageManager.loadTemplate(storageManager.getTemplateFilePath()));
+        Assert.assertThrows(FileNotFoundException.class, () ->
+            storageManager.loadTemplate(storageManager.getTemplateFilePath()));
     }
 
     @Test
